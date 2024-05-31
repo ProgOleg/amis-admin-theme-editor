@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 from setuptools import setup, find_packages
-
+import os
 
 # Parse version number from amis-admin-theme-editor/__init__.py:
 with open('amis_admin_theme_editor/__init__.py') as f:
@@ -17,7 +17,7 @@ setup_info = dict(
     author_email='stefan@u2d.ai',
     url='https://github.com/swelcker/amis-admin-theme-editor',
     download_url='http://pypi.python.org/pypi/amis-admin-theme-editor',
-    amis_admin_theme_editor_urls={
+    project_urls={
         'Source': 'https://github.com/swelcker/amis-admin-theme-editor',
         'Tracker': 'https://github.com/swelcker/amis-admin-theme-editor/issues',
     },
@@ -48,6 +48,11 @@ setup_info = dict(
 
     # Package info
     packages=['amis_admin_theme_editor'] + ['amis_admin_theme_editor.' + pkg for pkg in find_packages('amis_admin_theme_editor')],
+
+    # Include additional files
+    package_data={
+        'amis_admin_theme_editor': ['locale/*/*/*.*'],
+    },
 
     # Add _ prefix to the names of temporary build dirs
     options={'build': {'build_base': '_build'}, },
